@@ -1,9 +1,14 @@
-import React from "react";
+import React from 'react';
+import './app.scss';
 
 const Header = () => {
   return (
-    <h1>Portfolio Header</h1>
+    <div className="container">
+      <div className="header">
+        <h1>Welcome to React application</h1>
+      </div>
+    </div>
   );
-}
+};
 
 export default Header;
