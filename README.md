@@ -1,2 +1,2 @@
 # Rebrand Portfolio Project
-[https://rebrand-portfolio.web.app/](rebrand-portfolio)
+[rebrand-portfolio](https://rebrand-portfolio.web.app/)
