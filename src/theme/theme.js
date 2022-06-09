@@ -7,6 +7,19 @@ export const theme = createTheme({
     },
     secondary: {
       main: "#1f2235"
+    },
+  },
+  typography: {
+    fontFamily: 'poppins, sans-serif'
+  },
+  components: {
+    MuiDrawer: {
+      styleOverrides: {
+        paper: {
+          backgroundColor: "#1f2235",
+
+        }
+      }
     }
   }
 })
