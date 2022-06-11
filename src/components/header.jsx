@@ -1,26 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
-  Button,
-  TextField,
   AppBar,
   Box,
   Toolbar,
   IconButton,
   Stack,
   Typography,
-  Container,
   Drawer,
   List,
   ListItem,
   ListItemButton,
-  ListItemText,
 } from '@mui/material';
-import theme from '../theme/theme';
 import logo from '../assets/logo.svg';
 import { styled } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
-import LightModeIcon from '@mui/icons-material/LightMode';
-import DarkModeIcon from '@mui/icons-material/DarkMode';
 import { makeStyles } from '@mui/styles';
 import MenuIcon from '@mui/icons-material/Menu';
 
@@ -51,11 +44,11 @@ const Header = () => {
   });
   const styles = useStyles();
   const pages = [
-    { name: 'Home', to: 'home' },
+    { name: 'Home', to: '' },
     { name: 'About', to: 'about' },
     { name: 'Skills', to: 'skills' },
-    { name: 'Portfolio', to: 'skills' },
-    { name: 'Contact', to: 'skills' },
+    { name: 'Portfolio', to: 'portfolio' },
+    { name: 'Contact', to: 'contact' },
   ];
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -93,7 +86,7 @@ const Header = () => {
   return (
     <React.Fragment>
       <AppBar color="secondary">
-        <Box
+        <Toolbar
           sx={{
             padding: {
               xs: '10px 20px',
@@ -101,62 +94,43 @@ const Header = () => {
             },
           }}
         >
-          <Toolbar>
-            <Box sx={{ flexGrow: 1 }}>
-              <img src={logo} alt="logo" />
-            </Box>
-            <Stack
-              direction={'row'}
-              spacing={5}
-              sx={{
-                display: {
-                  xs: 'none',
-                  md: 'flex',
-                },
-              }}
-            >
-              {pages.map((link, index) => (
-                <Link
-                  to={link.to}
-                  style={{ textDecoration: 'none' }}
-                  key={index}
-                >
-                  <NavLink className={styles.linkHover}>{link.name}</NavLink>
-                </Link>
-              ))}
-            </Stack>
-            <IconButton
-              size={'large'}
-              sx={{
-                display: {
-                  xs: 'flex',
-                  md: 'none',
-                },
-              }}
-              onClick={toggleDrawer('right', true)}
-            >
-              <MenuIcon sx={{ color: 'white', fontSize: '36px' }} />
-            </IconButton>
-            {/* <IconButton size={'large'}>
-              <DarkModeIcon
-                sx={{
-                  color: 'white',
-                }}
-              />
-            </IconButton> */}
-          </Toolbar>
-        </Box>
+          <Box sx={{ flexGrow: 1 }}>
+            <img src={logo} alt="logo" />
+          </Box>
+          <Stack
+            direction={'row'}
+            spacing={5}
+            sx={{
+              display: {
+                xs: 'none',
+                md: 'flex',
+              },
+            }}
+          >
+            {pages.map((link, index) => (
+              <Link to={link.to} style={{ textDecoration: 'none' }} key={index}>
+                <NavLink className={styles.linkHover}>{link.name}</NavLink>
+              </Link>
+            ))}
+          </Stack>
+          <IconButton
+            size={'large'}
+            sx={{
+              display: {
+                xs: 'flex',
+                md: 'none',
+              },
+            }}
+            onClick={toggleDrawer('right', true)}
+          >
+            <MenuIcon sx={{ color: 'white', fontSize: '36px' }} />
+          </IconButton>
+        </Toolbar>
       </AppBar>
       <Drawer
         anchor={'right'}
         open={state['right']}
         onClose={toggleDrawer('right', false)}
-        // PaperProps={{
-        //   sx: {
-        //     backgroundColor: 'pink',
-        //     color: 'red',
-        //   },
-        // }}
       >
         {list('right')}
       </Drawer>
